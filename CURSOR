@@ -1,0 +1,23 @@
+ /*
+A cursor is a pointer that allows you to process query results row by row in PL/SQL.
+
+There are two types:
+
+Implicit Cursor → Oracle manages automatically
+
+Explicit Cursor → You manually declare and use it*/
+declare
+     -- v_first_name varchar(20);
+     -- v_salary hr.employees.salary %type;-- for unknown datatype
+     -- %rowtype attribute whichj is used to create a variable of recordtype
+     -- in this we store or create a column withits datatype
+     -- record is datastructure is used treate a group of related data
+    v_rec hr.EMPLOYEES%rowtype;
+BEGIN
+       
+ -- SELECT first_name into v_first_name from hr.EMPLOYEES where employee_id=101;
+ -- select salary into v_salary from hr.EMPLOYEES where employee_id=101;
+-- dbms_output.PUT_LINE(v_first_name || v_salary);
+ select * into v_rec from hr.EMPLOYEES where EMPLOYEE_ID=101;
+ DBMS_OUTPUT.PUT_LINE(v_rec.first_name ||'-'|| v_rec.email);
+end;
