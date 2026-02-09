@@ -1,0 +1,30 @@
+/*PL/SQL stands for Procedural Language / Structured Query Language.
+It is Oracle’s programming language that adds features like variables, loops, conditions, and functions on top of normal SQL.
+
+In other words:
+
+SQL → used to query and manage data
+PL/SQL → used to write programs that use SQL + programming logic*/
+/*declare
+    CURSOR,variable,exception
+
+begin
+        {executable}
+end
+exception
+    handle  optional */
+  declare
+    var int  :=0;
+BEGIN
+    var :=15; -- value is change
+    IF( mod(var,2)=0 )then
+        DBMS_OUTPUT.PUT_LINE('divisible');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('not divisible');
+    
+    END if;
+
+    DBMS_OUTPUT.PUT_LINE('Hey hii' || '_' || 'dd');
+    DBMS_OUTPUT.PUT_LINE(var);
+
+END;
