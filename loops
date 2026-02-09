@@ -1,0 +1,29 @@
+-- WHILE LOOP
+declare
+var int :=1;
+BEGIN
+        while var =5 loop
+            DBMS_OUTPUT.PUT_LINE('var is'||var);
+            var:=var+1;
+        end loop;
+end;
+-- FOR LOOP
+BEGIN
+    FOR i IN 1..5 LOOP
+        DBMS_OUTPUT.PUT_LINE('i = ' || i);
+    END LOOP;
+END;
+/
+-- BASIC 
+DECLARE
+    i NUMBER := 1;
+BEGIN
+    LOOP
+        DBMS_OUTPUT.PUT_LINE('Value = ' || i);
+        i := i + 1;
+
+        EXIT WHEN i > 5;  -- stop loop
+    END LOOP;
+END;
+/
+
