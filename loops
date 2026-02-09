@@ -23,7 +23,94 @@ BEGIN
         i := i + 1;
 
         EXIT WHEN i > 5;  -- stop loop
+________________________________
+Armstrong
+DECLARE
+    num INTEGER := 123;
+    digit INTEGER;
+    count_digits INTEGER:= 0;
+    temp INTEGER;
+    original INTEGER:= 0;
+    original_num INTEGER := num;
+BEGIN
+
+    temp := num;
+    WHILE temp > 0 LOOP
+        temp := FLOOR(temp / 10);
+        count_digits := count_digits + 1;
     END LOOP;
+
+    temp := num;
+    WHILE temp > 0 LOOP
+        digit := MOD(temp, 10);
+        original := original + POWER(digit, count_digits);
+        temp := FLOOR(temp / 10);
+    END LOOP;
+    IF original = original_num THEN
+        DBMS_OUTPUT.PUT_LINE('armstrong number');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('not armstrong number');
+    END IF;
 END;
-/
+___________________________________
+PRIME NUMBER:
+declare
+    num INTEGER :=7;
+    i INTEGER :=2;
+     is_prime BOOLEAN := TRUE;    
+BEGIN
+    IF num < 2 THEN
+        is_prime := FALSE;
+    ELSE
+    WHILE i <= num / 2 LOOP
+        IF MOD(num, i) = 0 THEN
+            is_prime := FALSE;
+            EXIT; 
+        END IF;
+        i := i + 1;
+    END LOOP;
+END IF;
+if is_prime THEN
+DBMS_OUTPUT.PUT_LINE('prime number');
+ELSE 
+DBMS_OUTPUT.PUT_LINE('not a prime number');
+END IF;
+
+
+end;
+_______________________________________________-
+LCM 
+DECLARE
+    a       INTEGER := 12;
+    b       INTEGER := 18;
+    lcm_val INTEGER;
+BEGIN
+    IF a > b THEN
+        lcm_val := a;
+    ELSE
+        lcm_val := b;
+    END IF;
+
+    WHILE TRUE LOOP
+        IF (lcm_val MOD a = 0) AND (lcm_val MOD b = 0) THEN
+            EXIT;
+        END IF;
+        lcm_val := lcm_val + 1;
+    END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE( lcm_val);
+END;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
