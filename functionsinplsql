@@ -1,0 +1,53 @@
+-- function must return a single value using return statement
+-- cannot manage transaction explicitly
+/* A function is a named PL/SQL block that:
+
+Accepts parameters (optional)
+
+Must return exactly one value
+
+Can be used inside SQL statements (SELECT, WHERE, etc.) if it is deterministic
+
+Performs calculations or returns processed results*/
+______________________________________________________________
+CREATE or REPLACE FUNCTION mytest RETURN int 
+as 
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('calling function :::');
+    RETURN 1;
+END;_______________________________
+_____________________________
+declare
+n int ;
+BEGIN
+    n := MYTEST();
+    DBMS_OUTPUT.PUT_LINE('res:' || n);
+end;
+________________________________
+CREATE or REPLACE FUNCTION mytest RETURN int 
+as 
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('calling function :::');
+    RETURN 1;
+END;
+__________________________________________________
+CREATE or REPLACE FUNCTION lcm( a in int , b in int) RETURN int as
+greater int;
+leastfactor int;
+
+begin 
+    if a>b THEN
+    greater :=a;
+    else 
+    greater :=b;
+    END if;
+    for i in greater .. (a*b) loop
+        if(mod(i,a)=0 and  mod(i,b)=0) THEN
+        leastfactor:=i;
+        EXIT;
+        end if;
+     end loop;
+    return 1;
+end;
+______________________________________________________
+
