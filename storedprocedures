@@ -1,0 +1,55 @@
+-- stored procedure -> named,pre compiled block of code to performm task 
+-- parameter modes -> IN,OUT,INOUT
+CREATE PROCEDURE procedure_test ()
+as 
+begin
+    dbms_output.put_line('start');
+end;
+_______________________________________________________________________________________
+CREATE OR REPLACE PROCEDURE procedure_test2
+as 
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('calling second procedure');
+    PROCEDURE_TEST;
+END;
+________________________________________
+execute procedure_test2;
+___________________________________________________________________________________
+in parameter => EXECUTE PROCEDURE_TEST2(12000);
+CREATE OR REPLACE PROCEDURE procedure_test2(salary in int)
+as 
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('procedure input+ your salary is'||''||salary);
+    
+END;
+_____________________________________________________________________________________________________
+out parameter : declare 
+result int;
+begin 
+     PROCEDURE_TEST2(5,result);
+end;_______>
+CREATE OR REPLACE PROCEDURE procedure_test2(num in int, last_num out int)
+as 
+BEGIN
+    for i in 1..num loop
+    DBMS_OUTPUT.PUT_LINE(i);
+    end loop;
+    last_num :=num;
+
+END;
+____________________________________-
+inout -> declare
+x int :=10;
+BEGIN
+    dbms_output.put_line('before:'||x);
+    procedure_test2(x);
+    dbms_output.put_line('after:'||x);
+end;________>
+CREATE OR REPLACE PROCEDURE procedure_test2(salary in out int)
+as 
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('procedure input+ your salary is'||''||salary);
+    salary := salary+500;
+END;
+_______________
+
